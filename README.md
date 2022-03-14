@@ -1,13 +1,19 @@
 # gotests-nvim
 
-There is [gotests-vim](https://github.com/buoto/gotests-vim/blob/master/autoload/gotests.vim) as a plugin to handle [gotests](https://github.com/cweill/gotests) with vim. 
+There is [gotests-vim](https://github.com/buoto/gotests-vim/blob/master/autoload/gotests.vim) as a plugin to handle [gotests](https://github.com/cweill/gotests) with vim.
 
 This is a Lua rewrite for Neovim.
 
-## Usage
-Call `:GoTests` to generate a test for the function at the current line or functions selected in visual mode.
+## Required
 
-Call `:GoTestsAll` to generate tests for all functions in the current buffer.
+- [gotests](https://github.com/cweill/gotests)
+
+## Usage
+
+Command|Description
+--|--
+`:GoTests`| generate tests for functions at the current line or functions selected in visual mode.
+`:GoTestsAll`| generate tests for all functions and methods
 
 ## Installation
 Gotests-vim requires **gotests** to be available in your `$PATH`. Alternatively you
@@ -29,7 +35,7 @@ use {
 If you want you can set path to your **gotests** binary if it's not in your path, for example:
 
     let g:gotests_bin = '/home/user/go/bin/gotests'
-    
+
 You can also set custom template directory:
 
     let g:gotests_template_dir = '/home/user/templates/'
