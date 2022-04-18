@@ -17,7 +17,7 @@ end
 function M.tests(first, last)
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    print('gotests-vim: gotests binary not found.')
+    print('gotests.nvim: gotests binary not found.')
     return
   end
 
@@ -37,7 +37,7 @@ function M.tests(first, last)
     -- remove first pipe('|')
     funcMatch = string.sub(funcMatch, 2)
   else
-    print('gotests-vim: No function selected!')
+    print('gotests.nvim: No function selected!')
     return
   end
 
@@ -48,13 +48,13 @@ function M.tests(first, last)
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -only ' .. shellescape(funcMatch) .. ' ' .. tmplDir .. ' ' .. shellescape(file))
 
-  print('gotests-vim: ' .. out)
+  print('gotests.nvim: ' .. out)
 end
 
 function M.alltests()
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    print('gotests-vim: gotests binary not found.')
+    print('gotests.nvim: gotests binary not found.')
     return
   end
 
@@ -65,7 +65,7 @@ function M.alltests()
 
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -all ' .. tmplDir .. ' ' .. shellescape(file))
-  print('gotests-vim: ' .. out)
+  print('gotests.nvim: ' .. out)
 end
 
 return M
