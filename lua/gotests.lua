@@ -38,7 +38,7 @@ local function setup_commands()
   }
 
   for _, cmd in ipairs(cmds) do
-    vim.api.nvim_add_user_command(
+    vim.api.nvim_create_user_command(
       cmd.name,
       cmd.cmd,
       cmd.opt
