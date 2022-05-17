@@ -1,6 +1,6 @@
 # gotests-nvim
 
-There is [gotests-vim](https://github.com/buoto/gotests-vim/blob/master/autoload/gotests.vim) as a plugin to handle [gotests](https://github.com/cweill/gotests) with vim.
+There is [gotests-vim](https://github.com/buoto/gotests-vim) as a plugin to handle [gotests](https://github.com/cweill/gotests) with vim.
 
 This is a Lua rewrite for Neovim.
 
