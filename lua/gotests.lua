@@ -10,11 +10,11 @@ local function gotests()
 
   vim.g.loaded_vim_gotests = 1
 
-  if exists(vim.g.gotests_bin) == 0 then
+  if exists(vim.g.gotests_bin) == 0 or vim.g.gotests_bin == nil then
     vim.g.gotests_bin = 'gotests'
   end
 
-  if exists(vim.g.gotests_template_dir) == 0 then
+  if exists(vim.g.gotests_template_dir) == 0 or vim.g.gotests_template_dir == nil then
     vim.g.gotests_template_dir = ''
   end
 end
