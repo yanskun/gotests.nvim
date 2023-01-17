@@ -28,7 +28,7 @@ can provide path to **gotests** using `g:gotests_bin` setting.
 
 ```lua
 use {
-  'yanskun/gotests-nvim',
+  'yanskun/gotests.nvim',
   ft = 'go',
   config = function()
     require('gotests').setup()
