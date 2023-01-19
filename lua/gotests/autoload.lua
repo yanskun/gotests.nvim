@@ -7,17 +7,19 @@ local function range(from, to)
   return function(_, lastvalue)
     local nextvalue = lastvalue + step
     if step > 0 and nextvalue <= to or step < 0 and nextvalue >= to or
-      step == 0
+        step == 0
     then
       return nextvalue
     end
-  end,nil, from - step
+  end, nil, from - step
 end
 
 function M.tests(first, last)
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    print('gotests.nvim: gotests binary not found.')
+    vim.notify('gotests.nvim: gotests binary not found.', vim.log.levels.ERROR, {
+      title = 'gotests.nvim'
+    })
     return
   end
 
@@ -37,7 +39,7 @@ function M.tests(first, last)
     -- remove first pipe('|')
     funcMatch = string.sub(funcMatch, 2)
   else
-    print('gotests.nvim: No function selected!')
+    vim.notify('gotests.nvim: No function selected!', vim.log.levels.WARN, { title = 'gotests' })
     return
   end
 
@@ -48,13 +50,15 @@ function M.tests(first, last)
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -only ' .. shellescape(funcMatch) .. ' ' .. tmplDir .. ' ' .. shellescape(file))
 
-  print('gotests.nvim: ' .. out)
+  vim.notify('gotests.nvim: ' .. out, vim.log.levels.INFO, { title = 'gotests' })
 end
 
 function M.alltests()
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    print('gotests.nvim: gotests binary not found.')
+    vim.notify('gotests.nvim: gotests binary not found.', vim.log.levels.ERROR, {
+      title = 'gotests.nvim'
+    })
     return
   end
 
@@ -65,7 +69,7 @@ function M.alltests()
 
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -all ' .. tmplDir .. ' ' .. shellescape(file))
-  print('gotests.nvim: ' .. out)
+  vim.notify('gotests.nvim: ' .. out, vim.log.levels.INFO, { title = 'gotests' })
 end
 
 return M
