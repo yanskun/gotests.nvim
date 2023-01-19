@@ -17,7 +17,7 @@ end
 function M.tests(first, last)
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    vim.notify('gotests.nvim: gotests binary not found.', vim.log.levels.ERROR, {
+    vim.notify('gotests binary not found.', vim.log.levels.ERROR, {
       title = 'gotests.nvim'
     })
     return
@@ -39,7 +39,7 @@ function M.tests(first, last)
     -- remove first pipe('|')
     funcMatch = string.sub(funcMatch, 2)
   else
-    vim.notify('gotests.nvim: No function selected!', vim.log.levels.WARN, { title = 'gotests' })
+    vim.notify('No function selected!', vim.log.levels.WARN, { title = 'gotests' })
     return
   end
 
@@ -50,13 +50,13 @@ function M.tests(first, last)
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -only ' .. shellescape(funcMatch) .. ' ' .. tmplDir .. ' ' .. shellescape(file))
 
-  vim.notify('gotests.nvim: ' .. out, vim.log.levels.INFO, { title = 'gotests' })
+  vim.notify(out, vim.log.levels.INFO, { title = 'gotests' })
 end
 
 function M.alltests()
   local bin = vim.g.gotests_bin
   if fn.executable(bin) == nil then
-    vim.notify('gotests.nvim: gotests binary not found.', vim.log.levels.ERROR, {
+    vim.notify('gotests binary not found.', vim.log.levels.ERROR, {
       title = 'gotests.nvim'
     })
     return
@@ -69,7 +69,7 @@ function M.alltests()
 
   local file = vim.fn.expand('%')
   local out = vim.fn.system(bin .. ' -w -all ' .. tmplDir .. ' ' .. shellescape(file))
-  vim.notify('gotests.nvim: ' .. out, vim.log.levels.INFO, { title = 'gotests' })
+  vim.notify(out, vim.log.levels.INFO, { title = 'gotests' })
 end
 
 return M
