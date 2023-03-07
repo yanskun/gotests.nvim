@@ -1,4 +1,4 @@
-# gotests-nvim
+# gotests.nvim
 
 There is [gotests-vim](https://github.com/buoto/gotests-vim) as a plugin to handle [gotests](https://github.com/cweill/gotests) with vim.
 
