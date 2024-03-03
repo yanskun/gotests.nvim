@@ -24,7 +24,7 @@ function M.tests(first, last)
   end
   
   local opts = ' -w'
-  if vim.go.gotests_parallel then
+  if vim.g.gotests_parallel then
     opts = opts .. ' -parallel'
   end
 
@@ -68,7 +68,7 @@ function M.alltests()
   end
 
   local opts = ' -w'
-  if vim.go.gotests_parallel then
+  if vim.g.gotests_parallel then
     opts = opts .. ' -parallel'
   end
 
