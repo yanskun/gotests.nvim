@@ -22,7 +22,7 @@ function M.tests(first, last)
     })
     return
   end
-  
+
   local opts = ' -w'
   if vim.g.gotests_parallel then
     opts = opts .. ' -parallel'
