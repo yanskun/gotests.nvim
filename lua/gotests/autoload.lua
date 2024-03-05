@@ -23,6 +23,11 @@ function M.tests(first, last)
     return
   end
 
+  local opts = ' -w'
+  if vim.g.gotests_parallel then
+    opts = opts .. ' -parallel'
+  end
+
   -- search function names
   local matchstr = vim.fn.matchstr
   local getline = vim.fn.getline
@@ -48,7 +53,7 @@ function M.tests(first, last)
     tmplDir = '-template_dir ' .. shellescape(vim.g.gotests_template_dir)
   end
   local file = vim.fn.expand('%')
-  local out = vim.fn.system(bin .. ' -w -only ' .. shellescape(funcMatch) .. ' ' .. tmplDir .. ' ' .. shellescape(file))
+  local out = vim.fn.system(bin .. opts .. ' -only ' .. shellescape(funcMatch) .. ' ' .. tmplDir .. ' ' .. shellescape(file))
 
   vim.notify(out, vim.log.levels.INFO, { title = 'gotests' })
 end
@@ -62,13 +67,18 @@ function M.alltests()
     return
   end
 
+  local opts = ' -w'
+  if vim.g.gotests_parallel then
+    opts = opts .. ' -parallel'
+  end
+
   local tmplDir = ''
   if vim.g.gotests_template_dir ~= '' then
     tmplDir = '-template_dir ' .. shellescape(vim.g.gotests_template_dir)
   end
 
   local file = vim.fn.expand('%')
-  local out = vim.fn.system(bin .. ' -w -all ' .. tmplDir .. ' ' .. shellescape(file))
+  local out = vim.fn.system(bin .. opts .. ' -all ' .. tmplDir .. ' ' .. shellescape(file))
   vim.notify(out, vim.log.levels.INFO, { title = 'gotests' })
 end
 
